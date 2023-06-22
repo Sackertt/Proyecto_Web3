@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->string('titulo',20);
             $table->string('archivo',100);
-            $table->boolean('baneada');
+            $table->boolean('baneada')->default(false);
             $table->text('motivo_ban');
             $table->string('cuenta_user',20);
 

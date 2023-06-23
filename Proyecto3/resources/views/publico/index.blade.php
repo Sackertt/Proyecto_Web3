@@ -14,6 +14,18 @@
             
             
         </div>
+        @foreach($imagenes as $imagen)
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h2>{{$imagen->titulo}}</h2>
+                    </div>
+                    <div class="card-body">
+                        <img class="img-thumbnail" src="{{asset('app/public/'.$imagen->archivo)}}"  alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        @endforeach
     <div>
 </div>
     

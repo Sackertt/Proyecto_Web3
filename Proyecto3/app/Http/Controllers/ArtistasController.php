@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Cuenta;
 use App\Models\Imagen;
 use App\Http\Requests\ArtistasRequest;
+use App\Http\Requests\ArteRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class ArtistasController extends Controller
 {
@@ -26,7 +28,7 @@ class ArtistasController extends Controller
         
         return view('artista.create');
     }
-    public function store(Request $request){
+    public function store(ArteRequest $request){
         $imagen = new Imagen();
         $imagen->titulo = $request->titulo;
         $file = $request->file('img');
@@ -35,6 +37,27 @@ class ArtistasController extends Controller
         $imagen->archivo = $name;
         $imagen->cuenta_user = Auth::user()->user;
         $imagen->save();
-        return redirect('home.index');
+        return redirect()->route('publico.index');
+    }
+    public function update(Request $request, Imagen $imagen){
+        $imagen->titulo = $request->titulo;
+        $imagen->save();
+
+        return redirect()->route('artista.gestion');
+    }
+    public function edit($imagen) {
+        $imagen = DB::table('imagenes')->where('id',$imagen)->first();
+        
+        return view('artista.edit',compact('imagen'));
+    }
+    public function gestion(){
+        $imagenes = DB::table('imagenes')->where('cuenta_user',Auth::user()->user)->get();
+        return view('artista.gestion',compact('imagenes'));
+    }
+    
+    public function delete(Imagen $imagen){
+        Storage::delete('public/'.$imagen->archivo);
+        DB::table('imagenes')->where('id',$imagen->id)->delete();
+        return redirect()->route('artista.gestion');
     }
 }

@@ -11,7 +11,7 @@ class ArteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,18 @@ class ArteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'titulo'=>'required|max:20',
+            'img' => 'required|image',
+        ];
+    }
+    public function messages():array
+    {
+        //'campo.regla'=>'mensaje'
+        return [
+            'titulo.required'=>'Ingrese un titulo para su arte',
+            'titulo.max'=>'Ingrese un titulo mas corto',
+            'img.required'=>'Ingrese el archivo de su arte',
+            'img.image'=>'Ingrese un archivo de tipo imagen(.jpg, .png, etc..)',
         ];
     }
 }

@@ -22,4 +22,9 @@ class CuentasController extends Controller
             'user' => 'Credenciales Incorrectas',
         ])->onlyInput('user');
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('publico.index');
+    }
 }

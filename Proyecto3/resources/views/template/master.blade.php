@@ -9,17 +9,17 @@
 </head>
     <title>Document</title>
 </head>
-<body style="background: linear-gradient(to right, #252d80 50%, #41d7eb 100%);">
-<nav class="navbar navbar-expand-lg bg-primary ">
+<body style="background: linear-gradient(to right, #4737a4 50%, #af43d4 100%);">
+<nav class="navbar navbar-expand-lg bg-primary " style="background: linear-gradient(to right, #4737a4 50%, #af43d4 100%);">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="#">Bellas Artes</a>
+    <a class="navbar-brand text-white" href="#">PixelArte</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active text-white" aria-current="page" href="{{route('publico.index')}}">Inicio</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -37,8 +37,14 @@
         </li>
        
       </ul>
-      <a class="btn btn-secondary" href="#">Iniciar Sesion</a>
-      <a class="btn btn-info  ms-3" href="#">Crear Cuenta</a>
+      @if (Auth::check()) 
+        <a class="btn btn-secondary" href="{{route('cuentas.logout')}}">Cerrar Sesion</a>
+      @else 
+        <a class="btn btn-secondary" href="{{route('publico.sesion')}}">Iniciar Sesion</a>
+        <a class="btn btn-info ms-3 text-white" href="{{route('publico.register')}}">Crear Cuenta</a>
+      
+      @endif
+      
 
     </div>
   </div>

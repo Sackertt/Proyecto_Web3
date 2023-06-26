@@ -5,7 +5,7 @@
         <div class="col mt-3">
            <form action="{{route('publico.index')}}">
                 <select class="form-select"  name="artista" aria-label="Default select example">
-                    <option selected>Seleccione Artista para filtrar busqueda</option>
+                    <option value="none" selected>Seleccione Artista para filtrar busqueda</option>
                     @foreach($artistas as $artista)
                       <option value="{{$artista->user}}">{{$artista->user}}</option>
                     @endforeach

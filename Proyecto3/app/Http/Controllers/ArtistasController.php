@@ -11,7 +11,7 @@ use App\Http\Requests\ArteRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-
+use Gate;
 class ArtistasController extends Controller
 {
     public function register(ArtistasRequest $request){
@@ -25,7 +25,9 @@ class ArtistasController extends Controller
         return view('publico.register');
     }
     public function create(){
-        
+        if(Gate::denies('artista-acceso')){
+            return redirect()->route('publico.index');
+        }
         return view('artista.create');
     }
     public function store(ArteRequest $request){
@@ -47,10 +49,12 @@ class ArtistasController extends Controller
     }
     public function edit($imagen) {
         $imagen = DB::table('imagenes')->where('id',$imagen)->first();
-        
         return view('artista.edit',compact('imagen'));
     }
     public function gestion(){
+        if(Gate::denies('artista-acceso')){
+            return redirect()->route('publico.index');
+        }
         $imagenes = DB::table('imagenes')->where('cuenta_user',Auth::user()->user)->get();
         return view('artista.gestion',compact('imagenes'));
     }

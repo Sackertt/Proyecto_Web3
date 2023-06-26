@@ -13,8 +13,8 @@
                         <div class="row mt-3">
                             
                             <div  class="col" ><a class="btn btn-secondary" href="{{route('artista.edit',$imagen->id)}}">Editar Imagen</a></div>
-                           
-                           
+                        
+                        
                             <div class="col">
                                 <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar Imagen</button></div>
                             </div>

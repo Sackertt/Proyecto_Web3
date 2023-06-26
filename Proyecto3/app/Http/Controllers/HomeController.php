@@ -11,16 +11,14 @@ use Illuminate\Support\Facades\Storage;
 class HomeController extends Controller
 {
     public function index(Request $request){
-        $usuario =$request->artista;
+        $usuario=$request->artista;
         $artistas = DB::table('cuentas')->where('perfil_id',1)->get();
-
         if($artistas->contains('user', $usuario)){
             $imagenes = DB::table('imagenes')->where('cuenta_user',$usuario)->get();;
         } else {
             $imagenes = Imagen::ALL();  
         }
 
-       
         return view('publico.index',compact(['imagenes','artistas']));
     }
     public function login(){

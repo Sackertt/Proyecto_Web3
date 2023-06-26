@@ -22,20 +22,21 @@
           <a class="nav-link active text-white" aria-current="page" href="{{route('publico.index')}}">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link  text-white" href="#">Link</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-       
+        @if(Gate::allows('artista-acceso'))
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Artista
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{route('artista.create')}}">Subir Imagen</a></li>
+              <li><a class="dropdown-item" href="{{route('artista.gestion')}}">Gestionar</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">A</a></li>
+            </ul>
+          </li>
+        @endif
       </ul>
       @if (Auth::check()) 
         <a class="btn btn-secondary" href="{{route('cuentas.logout')}}">Cerrar Sesion</a>

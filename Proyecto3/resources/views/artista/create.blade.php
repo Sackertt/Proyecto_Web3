@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card">
             <div class="card-header bg-primary text-white">
-                <h2>Crear Cuenta de Artista</h2>
+                <h2>Subir Imagen</h2>
             </div>
             <div class="card-body">
             <form method="POST" action="{{route('artista.store')}}" enctype="multipart/form-data">
@@ -20,7 +20,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Subir Imagen</button>
             </form>
-                 @if ($errors->any())
+                @if ($errors->any())
                     <div class="alert alert-danger">
                         <p>Por favor solucione los siguientes problemas:</p>
                         <ul>

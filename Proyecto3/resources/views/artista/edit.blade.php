@@ -21,7 +21,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Editar Imagen</button>
             </form>
-                 @if ($errors->any())
+                @if ($errors->any())
                     <div class="alert alert-danger">
                         <p>Por favor solucione los siguientes problemas:</p>
                         <ul>

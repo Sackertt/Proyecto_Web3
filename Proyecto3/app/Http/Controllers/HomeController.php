@@ -14,9 +14,9 @@ class HomeController extends Controller
         $usuario=$request->artista;
         $artistas = DB::table('cuentas')->where('perfil_id',1)->get();
         if($artistas->contains('user', $usuario)){
-            $imagenes = DB::table('imagenes')->where('cuenta_user',$usuario)->get();;
+            $imagenes = DB::table('imagenes')->where('cuenta_user',$usuario)->where('baneada',0)->get();
         } else {
-            $imagenes = Imagen::ALL();  
+            $imagenes = DB::table('imagenes')->where('baneada',0)->get();
         }
 
         return view('publico.index',compact(['imagenes','artistas']));

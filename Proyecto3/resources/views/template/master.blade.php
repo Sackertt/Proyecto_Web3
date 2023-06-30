@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/bootstrap-custom.min.css')}}">
 </head>
-    <title>Document</title>
+    <title>PixelArte</title>
 </head>
 <body style="background: linear-gradient(to right, #4737a4 50%, #af43d4 100%);">
 <nav class="navbar navbar-expand-lg bg-primary " style="background: linear-gradient(to right, #4737a4 50%, #af43d4 100%);">
@@ -21,21 +21,13 @@
         <li class="nav-item">
           <a class="nav-link active text-white" aria-current="page" href="{{route('publico.index')}}">Inicio</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link  text-white" href="#">Link</a>
-        </li>
         @if(Gate::allows('artista-acceso'))
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Artista
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{{route('artista.create')}}">Subir Imagen</a></li>
-              <li><a class="dropdown-item" href="{{route('artista.gestion')}}">Gestionar</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">A</a></li>
-            </ul>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="{{route('artista.create')}}">Subir Imagen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="{{route('artista.gestion')}}">Gestionar Imagenes</a>
+        </li>
         @endif
       </ul>
       @if (Auth::check()) 

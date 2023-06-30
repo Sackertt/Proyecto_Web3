@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdministadoresController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CuentasController;
@@ -31,6 +32,9 @@ Route::post('/store',[ArtistasController::class,'store'])->name('artista.store')
 Route::get('/gestion',[ArtistasController::class,'gestion'])->name('artista.gestion');
 Route::get('/delete/{imagen}',[ArtistasController::class,'delete'])->name('artista.delete');
 
+
+Route::get('/perfiles',[AdministadoresController::class,'perfil'])->name('admin.perfil');
+Route::get('/banear',[AdministadoresController::class,'ban'])->name('admin.ban');
 
 
 Route::get('/update/{imagen}',[ArtistasController::class,'edit'])->name('artista.edit');

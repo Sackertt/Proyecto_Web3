@@ -35,4 +35,10 @@ class AdministadoresController extends Controller
         $imagen->save();
         return redirect()->route('publico.index');
     }
+    public function desbanear(Imagen $imagen){
+        $imagen->motivo_ban->nullable();
+        $imagen->baneada = 0;
+        $imagen->save();
+        return redirect()->route('publico.index');
+    }
 }

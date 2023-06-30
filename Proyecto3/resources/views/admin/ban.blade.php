@@ -17,7 +17,7 @@
                             </div>
                         @elseif($imagen->baneada == 1)
                             <div class="col" >
-                                <a href=""class="btn btn-success text-white">Desbanear</a>
+                                <a href="{{route('admin.desbanear',$imagen->id)}}"class="btn btn-success text-white">Desbanear</a>
                             </div>
                         @endif
                     </div>

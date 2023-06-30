@@ -35,6 +35,10 @@ Route::get('/delete/{imagen}',[ArtistasController::class,'delete'])->name('artis
 
 Route::get('/perfiles',[AdministadoresController::class,'perfil'])->name('admin.perfil');
 Route::get('/banear',[AdministadoresController::class,'ban'])->name('admin.ban');
+Route::get('/banear/{imagen}',[AdministadoresController::class,'motivoban'])->name('admin.motivoban');
+Route::put('/banear/{imagen}',[AdministadoresController::class,'motivobanSubir'])->name('admin.motivobanSubir');
+
+
 
 
 Route::get('/update/{imagen}',[ArtistasController::class,'edit'])->name('artista.edit');

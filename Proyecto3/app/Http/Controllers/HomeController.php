@@ -27,4 +27,9 @@ class HomeController extends Controller
     public function register(){
         return view('publico.register');
     }
+    public function redirectToHome()
+{
+    return view('home');
+}
+
 }

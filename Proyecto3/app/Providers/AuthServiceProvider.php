@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
             return $usuario->perfil_id==1;
             
         });
+        Gate::define('admin-acceso', function($usuario) {
+            return $usuario->perfil_id==2;
+            
+        });
     }
 
 }

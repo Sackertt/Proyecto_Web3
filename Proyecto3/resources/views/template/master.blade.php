@@ -29,6 +29,14 @@
           <a class="nav-link active text-white" aria-current="page" href="{{route('artista.gestion')}}">Gestionar Imagenes</a>
         </li>
         @endif
+        @if(Gate::allows('admin-acceso'))
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="{{route('admin.perfil')}}">Perfiles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="{{route('admin.ban')}}">Ban</a>
+        </li>
+        @endif
       </ul>
       @if (Auth::check()) 
         <a class="btn btn-secondary" href="{{route('cuentas.logout')}}">Cerrar Sesion</a>

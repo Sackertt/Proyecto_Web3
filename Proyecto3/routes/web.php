@@ -39,6 +39,3 @@ Route::get('/banear',[AdministadoresController::class,'ban'])->name('admin.ban')
 
 Route::get('/update/{imagen}',[ArtistasController::class,'edit'])->name('artista.edit');
 Route::put('/update/{imagen}',[ArtistasController::class,'update'])->name('artista.update');
-
-
-

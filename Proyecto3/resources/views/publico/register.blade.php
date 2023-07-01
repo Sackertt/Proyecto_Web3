@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                <button type="submit" class="btn btn-primary">Registrar Cuenta</button>
             </form>
             @if ($errors->any())
                     <div class="alert alert-danger">

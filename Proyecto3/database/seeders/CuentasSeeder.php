@@ -15,9 +15,8 @@ class CuentasSeeder extends Seeder
     public function run(): void
     {
         DB::table('cuentas')->insert([
-            ['user' => 'Artista1','password' => Hash::make('1234'),'nombre'=>'Artista','apellido'=>'1' ,'perfil_id'=>1],           
-            ['user' => 'Artista2','password' => Hash::make('5678'),'nombre'=>'Artista','apellido'=>'2','perfil_id'=>1],
-            ['user' => 'Admin1','password' => Hash::make('8899'),'nombre'=>'Admin','apellido'=>'1','perfil_id'=>2],
+            ['user' => 'Artista1','password' => Hash::make('artista1'),'nombre'=>'Artista','apellido'=>'1' ,'perfil_id'=>1],           
+            ['user' => 'Admin1','password' => Hash::make('admin8899'),'nombre'=>'Admin','apellido'=>'1','perfil_id'=>2],
         ]);
     }
 }

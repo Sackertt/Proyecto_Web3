@@ -37,6 +37,7 @@ Route::get('/verbaneo',[ArtistasController::class,'verbaneo'])->name('artista.ve
 
 Route::get('/perfiles',[AdministadoresController::class,'perfil'])->name('admin.perfil');
 Route::get('/banear',[AdministadoresController::class,'ban'])->name('admin.ban');
+Route::get('/cuentas',[AdministadoresController::class,'cuentas'])->name('admin.cuentas');
 Route::put('/banear/{imagen}',[AdministadoresController::class,'motivobanSubir'])->name('admin.motivobanSubir');
 Route::put('/desbanear/{imagen}',[AdministadoresController::class,'desbanear'])->name('admin.desbanear');
 
@@ -47,6 +48,6 @@ Route::put('/desbanear/{imagen}',[AdministadoresController::class,'desbanear'])-
 Route::get('/update/{imagen}',[ArtistasController::class,'edit'])->name('artista.edit');
 Route::put('/update/{imagen}',[ArtistasController::class,'update'])->name('artista.update');
 
-Route::fallback(function () {
-    return redirect()->route('publico.index');
-});
+// Route::fallback(function () {
+//     return redirect()->route('publico.index');
+// });

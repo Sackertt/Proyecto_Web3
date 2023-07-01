@@ -45,6 +45,10 @@ class AdministadoresController extends Controller
         return redirect()->route('publico.index');
     }
     public function cuentas(){
-
+        if(Gate::denies('admin-acceso')){
+            return redirect()->route('publico.index');
+        }
+        $cuentas = DB::table('cuentas')->get();
+        return  view('admin.cuentas',compact('cuentas'));
     }
 }

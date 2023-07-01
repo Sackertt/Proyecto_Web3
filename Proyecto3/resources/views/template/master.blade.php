@@ -37,7 +37,10 @@
           <a class="nav-link active text-white" aria-current="page" href="{{route('admin.perfil')}}">Perfiles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active text-white" aria-current="page" href="{{route('admin.ban')}}">Ban</a>
+          <a class="nav-link active text-white" aria-current="page" href="{{route('admin.ban')}}">Banear</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="{{route('admin.cuentas')}}">Cuentas</a>
         </li>
         @endif
       </ul>

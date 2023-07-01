@@ -11,7 +11,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">#</th>
                             <th scope="col">Usuario</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
@@ -19,12 +19,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($cuentas as $cuenta)
+                        @foreach($cuentas as $index=> $cuenta)
                             <tr>
-                                <th scope="row">{{$perfil->id}}</th>
+                                <th scope="row">{{$index}}</th>
                                 <td>{{$cuenta->user}}</td>
                                 <td>{{$cuenta->nombre}}</td>
                                 <td>{{$cuenta->apellido}}</td>
+                                <td><a href="#"class="btn btn-secondary">Modificar</a>
+                                    <a href="#"class="btn btn-danger text-white">Eliminar</a></td>
                             </tr>
                         @endforeach
                     </tbody>

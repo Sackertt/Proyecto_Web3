@@ -26,19 +26,29 @@ class AdministadoresController extends Controller
         return view('admin.ban',compact('imagenes'));
     }   
     public function motivoban($imagen) {
+        if(Gate::denies('admin-acceso')){
+            return redirect()->route('publico.index');
+        }
         $imagen = DB::table('imagenes')->where('id',$imagen)->first();
         return view('admin.motban',compact('imagen'));
     }   
     public function motivobanSubir(BanearRequest $request,Imagen $imagen){
+        if(Gate::denies('admin-acceso')){
+            return redirect()->route('publico.index');
+        }
         $imagen->motivo_ban = $request->motivoBan;
         $imagen->baneada = 1;
         $imagen->save();
         return redirect()->route('publico.index');
     }
     public function desbanear(Imagen $imagen){
-        $imagen->motivo_ban->nullable();
+        if(Gate::denies('admin-acceso')){
+            return redirect()->route('publico.index');
+        }
+        $imagen->motivo_ban = null;
         $imagen->baneada = 0;
         $imagen->save();
+        
         return redirect()->route('publico.index');
     }
 }

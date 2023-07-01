@@ -31,11 +31,12 @@ Route::get('/create',[ArtistasController::class,'create'])->name('artista.create
 Route::post('/store',[ArtistasController::class,'store'])->name('artista.store');
 Route::get('/gestion',[ArtistasController::class,'gestion'])->name('artista.gestion');
 Route::get('/delete/{imagen}',[ArtistasController::class,'delete'])->name('artista.delete');
+Route::get('/verbaneo',[ArtistasController::class,'verbaneo'])->name('artista.verbaneo');
+
 
 
 Route::get('/perfiles',[AdministadoresController::class,'perfil'])->name('admin.perfil');
 Route::get('/banear',[AdministadoresController::class,'ban'])->name('admin.ban');
-Route::get('/banear/{imagen}',[AdministadoresController::class,'motivoban'])->name('admin.motivoban');
 Route::put('/banear/{imagen}',[AdministadoresController::class,'motivobanSubir'])->name('admin.motivobanSubir');
 Route::put('/desbanear/{imagen}',[AdministadoresController::class,'desbanear'])->name('admin.desbanear');
 

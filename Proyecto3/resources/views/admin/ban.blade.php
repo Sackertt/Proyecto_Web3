@@ -13,11 +13,46 @@
                     <div class="row mt-3">
                         @if($imagen->baneada == 0)
                             <div class="col">
-                                <a href="{{route('admin.motivoban',$imagen->id)}}" class="btn btn-danger text-white">Banear</a>
+                            <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Banear Imagen
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Motivo Baneo</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{route('admin.motivobanSubir',$imagen->id)}}" method="POST">
+                                        @method('put')
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label for="motivoBan"  class="form-label">Motivo Baneo</label>
+                                                    <textarea class="form-control" id="motivoBan" name="motivoBan" rows="2"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <button type="submit" class="btn btn-primary">Confirmar Baneo</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                             </div>
                         @elseif($imagen->baneada == 1)
                             <div class="col" >
-                                <a href="{{route('admin.desbanear',$imagen->id)}}"class="btn btn-success text-white">Desbanear</a>
+                                <form action="{{route('admin.desbanear',$imagen->id)}}" method="post">
+                                    @method('put')  
+                                    @csrf 
+                                    <button type="submit" class="btn btn-success text-white">Desbanear</button>
+                                </form>
                             </div>
                         @endif
                     </div>

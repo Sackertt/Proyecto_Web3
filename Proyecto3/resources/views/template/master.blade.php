@@ -26,7 +26,10 @@
           <a class="nav-link active text-white" aria-current="page" href="{{route('artista.create')}}">Subir Imagen</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active text-white" aria-current="page" href="{{route('artista.gestion')}}">Gestionar Imagenes</a>
+          <a class="nav-link active text-white" aria-current="page" href="{{route('artista.gestion')}}">Gestionar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="{{route('artista.verbaneo')}}">Ver Baneos</a>
         </li>
         @endif
         @if(Gate::allows('admin-acceso'))

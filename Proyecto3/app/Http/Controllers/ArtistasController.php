@@ -31,6 +31,9 @@ class ArtistasController extends Controller
         return view('artista.create');
     }
     public function store(ArteRequest $request){
+        if(Gate::denies('artista-acceso')){
+            return redirect()->route('publico.index');
+        }
         $imagen = new Imagen();
         $imagen->titulo = $request->titulo;
         $file = $request->file('img');
@@ -42,12 +45,18 @@ class ArtistasController extends Controller
         return redirect()->route('publico.index');
     }
     public function update(Request $request, Imagen $imagen){
+        if(Gate::denies('artista-acceso')){
+            return redirect()->route('publico.index');
+        }
         $imagen->titulo = $request->titulo;
         $imagen->save();
 
         return redirect()->route('artista.gestion');
     }
     public function edit($imagen) {
+        if(Gate::denies('artista-acceso')){
+            return redirect()->route('publico.index');
+        }
         $imagen = DB::table('imagenes')->where('id',$imagen)->first();
         return view('artista.edit',compact('imagen'));
     }
@@ -60,8 +69,19 @@ class ArtistasController extends Controller
     }
     
     public function delete(Imagen $imagen){
+        if(Gate::denies('artista-acceso')){
+            return redirect()->route('publico.index');
+        }
         Storage::delete('public/'.$imagen->archivo);
         DB::table('imagenes')->where('id',$imagen->id)->delete();
         return redirect()->route('artista.gestion');
+    }
+    public function verbaneo(){
+        if(Gate::denies('artista-acceso')){
+            return redirect()->route('publico.index');
+        }
+        $usuario = Auth::user()->user;
+        $imagenes = DB::table('imagenes')->where('cuenta_user',$usuario)->where('baneada',1)->get();
+        return view('artista.verbaneo',compact('imagenes'));
     }
 }
